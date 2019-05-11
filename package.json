@@ -1,0 +1,21 @@
+{
+    "name": "mesafe-api",
+    "version": "1.0.0",
+    "description": "Rest API for meSafe APP",
+    "main": "src/index.js",
+    "scripts": {
+        "dev": "nodemon src/index.js"
+    },
+    "keywords": [],
+    "author": "Diego Payan Lopez",
+    "license": "AFL-1.1",
+    "repository": "https://github.com/DiegoPayan/meSafe-api",
+    "dependencies": {
+        "express": "^4.16.4",
+        "jsonwebtoken": "^8.5.1",
+        "mysql": "^2.16.0"
+    },
+    "devDependencies": {
+        "nodemon": "^1.18.10"
+    }
+}
