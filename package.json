@@ -13,7 +13,9 @@
     "repository": "https://github.com/DiegoPayan/meSafe-api",
     "dependencies": {
         "express": "^4.16.4",
+        "express-fileupload": "^1.1.4",
         "jsonwebtoken": "^8.5.1",
+        "jwt-decode": "^2.2.0",
         "mysql": "^2.16.0"
     },
     "devDependencies": {
