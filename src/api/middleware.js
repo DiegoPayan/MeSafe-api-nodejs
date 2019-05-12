@@ -3,11 +3,10 @@ const config = require('./config');
 
 const verifyToken = (req,res,next) => {
     const token = req.headers['x-access-token'] || req.headers['authorization'];
-    if(token.startsWith('Bearer')) {
-        token = token.slice(7, token.length);
-    }
-
     if(token) {
+        if(token.startsWith('Bearer')) {
+            token = token.slice(7, token.length);
+        }
         jwt.verify(token, config.secret, (err, decoded) => {
             if(err) {
                 return res.json({
@@ -22,7 +21,7 @@ const verifyToken = (req,res,next) => {
     } else {
         return res.json({
             success: false,
-            message: 'El token no fue proporcionado'
+            message: 'Requiere un token de autorizacion!'
         });
     }
 }
