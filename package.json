@@ -4,7 +4,8 @@
     "description": "Rest API for meSafe APP",
     "main": "src/index.js",
     "scripts": {
-        "dev": "nodemon src/index.js"
+        "dev": "nodemon src/index.js",
+        "prod": "node src/index.js"
     },
     "keywords": [],
     "author": "Diego Payan Lopez",
