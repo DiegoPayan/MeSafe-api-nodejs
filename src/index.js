@@ -10,7 +10,8 @@ app.use(bodyParser.urlencoded({ extended: true}));
 app.use(express.json());
 
 //Routes
-app.use('/login', require('./routes/users'));
+app.get('/', (req,res) => { res.json("Hola mundo") });
+app.use('/login', require('./routes/usuarios'));
 
 //Starting the server
 app.listen(app.get('port'), () => {
