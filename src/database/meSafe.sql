@@ -68,11 +68,10 @@ ALTER TABLE reportes ADD FOREIGN KEY (idUsuario) REFERENCES usuarios(id);
 
 INSERT INTO reportes(fecha,descripcion,latitud,longitud,positivos,negativos,tipoReporte,idUsuario)
 			VALUES
-				(NOW(),"Este es un reporte bonito 1", "11.11", "111.43", 11, 1, 1,1),
-                (NOW(),"Este es un reporte bonito 2", "22.22", "122.43", 22, 2, 2,2),
-                (NOW(),"Este es un reporte bonito 3", "33.33", "133.43", 33, 3, 3,3),
-                (NOW(),"Este es un reporte bonito 4", "44.44", "144.43", 44, 4, 4,4),
-                (NOW(),"Este es un reporte bonito 5", "55.55", "155.43", 55, 5, 5,1);
+				(NOW(),"Reporte Robo 1", "11.11", "111.43", 11, 1, 1,1,true),
+                (NOW(),"Reporte Asalto", "22.22", "122.43", 22, 2, 2,2,true),
+                (NOW(),"Secuestro", "33.33", "133.43", 33, 3, 3,3,false),
+                (NOW(),"Acoso", "44.44", "144.43", 44, 4, 3,4,true);
 
 CREATE TABLE IF NOT EXISTS imagenesReportes (
     id INT NOT NULL AUTO_INCREMENT,
