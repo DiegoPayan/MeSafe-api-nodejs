@@ -1,6 +1,6 @@
-DROP DATABASE meSafe;
+-- DROP DATABASE meSafe;
 
-CREATE DATABASE meSafe;
+-- CREATE DATABASE meSafe;
 
 USE meSafe;
 
