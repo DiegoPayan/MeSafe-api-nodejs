@@ -1,3 +1,7 @@
+-- DROP DATABASE meSafe;
+
+-- CREATE DATABASE meSafe;
+
 USE meSafe;
 
 CREATE TABLE IF NOT EXISTS tipoUsuario (
@@ -60,18 +64,19 @@ CREATE TABLE IF NOT EXISTS reportes(
     negativos INT NOT NULL DEFAULT 0,
     tipoReporte INT NOT NULL,
     idUsuario INT NOT NULL,
+    emergencia BOOLEAN NOT NULL,
     PRIMARY KEY (id)
 );
 
 ALTER TABLE reportes ADD FOREIGN KEY (tipoReporte) REFERENCES tipoReportes(id);
 ALTER TABLE reportes ADD FOREIGN KEY (idUsuario) REFERENCES usuarios(id);
 
-INSERT INTO reportes(fecha,descripcion,latitud,longitud,positivos,negativos,tipoReporte,idUsuario)
+INSERT INTO reportes(fecha,descripcion,latitud,longitud,positivos,negativos,tipoReporte,idUsuario, emergencia)
 			VALUES
-				(NOW(),"Reporte Robo 1", "11.11", "111.43", 11, 1, 1,1),
-                (NOW(),"Reporte Asalto", "22.22", "122.43", 22, 2, 2,2),
-                (NOW(),"Secuestro", "33.33", "133.43", 33, 3, 3,3),
-                (NOW(),"Acoso", "44.44", "144.43", 44, 4, 3,4);
+				(NOW(),"Reporte Robo 1", "11.11", "111.43", 11, 1, 1,1,1),
+                (NOW(),"Reporte Asalto", "22.22", "122.43", 22, 2, 2,2,1),
+                (NOW(),"Secuestro", "33.33", "133.43", 33, 3, 3,3,0),
+                (NOW(),"Acoso", "44.44", "144.43", 44, 4, 3,4,0);
 
 CREATE TABLE IF NOT EXISTS imagenesReportes (
     id INT NOT NULL AUTO_INCREMENT,
