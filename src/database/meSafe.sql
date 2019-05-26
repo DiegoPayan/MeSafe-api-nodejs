@@ -1,3 +1,7 @@
+-- DROP DATABASE meSafe;
+
+-- CREATE DATABASE meSafe;
+
 USE meSafe;
 
 CREATE TABLE IF NOT EXISTS tipoUsuario (
@@ -46,7 +50,7 @@ CREATE TABLE IF NOT EXISTS tipoReportes (
     PRIMARY KEY (id)
 );
 
-INSERT INTO tipoReportes(tipoReporte) VALUES ("Robo"),("Asalto"),("Secuestro"),("Acoso"),("Reporte ciudadano");
+INSERT INTO tipoReportes(tipoReporte) VALUES ("Robo"),("Asalto"),("Reporte ciudadano");
 
 CREATE TABLE IF NOT EXISTS reportes(
     id INT NOT NULL AUTO_INCREMENT,
@@ -81,8 +85,7 @@ INSERT INTO imagenesReportes(idReporte,src) VALUES
 							(1,'/images/reportes/1-1'),
                             (2,'/images/reportes/2-1'),
                             (3,'/images/reportes/3-1'),
-                            (4,'/images/reportes/4-1'),
-                            (5,'/images/reportes/5-1');
+                            (4,'/images/reportes/4-1');
                             
 CREATE TABLE IF NOT EXISTS comentariosReportes (
     id INT NOT NULL AUTO_INCREMENT,
@@ -138,4 +141,3 @@ INSERT INTO centroAyuda(nombre,telefono,direccion,idTipoCentroAyuda)
                         ("Instituto Municipal de las mujeres","716 9757","Calle Cristóbal Colón 245, Primer Cuadro, 80000 Culiacán Rosales, Sin.", 4),
                         ("DIF","715 7142","Juan José Ríos, Poniente #265-B, Jorge Almada, 80200 Culiacán Rosales, Sin.", 4),
                         ("Instituto Estatal de protección civil","717 8287","Primera 65, Vallado Viejo, 80110 Culiacán Rosales, Sin.", 4);
-
