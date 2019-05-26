@@ -15,6 +15,8 @@ app.use(appUpload());
 app.get('/', (req,res) => { res.json("Hola mundo") });
 app.use('/login', require('./routes/usuarios'));
 app.use('/reportes', require('./routes/reportes'));
+app.use('/centro-ayuda', require('./routes/centroAyuda'));
+app.use('/amigos', require('./routes/amigos'));
 
 //Starting the server
 app.listen(app.get('port'), () => {
