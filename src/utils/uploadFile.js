@@ -1,7 +1,7 @@
 
 const uploadFile = (file,path) => {
-    let EDFile = file
-    EDFile.mv(`../images/path/${EDFile.name}`,err => {
+    let archivo = file
+    archivo.mv(`../images/path/${archivo.name}`,err => {
         if(err) {
             return ({ success: false, message: err })
         } else {
