@@ -9,6 +9,7 @@ let errorMessage;
 
 router.post('/', (req, res) => {
   const { username, pass } = req.body;
+  console.log(username, pass);
   if (username, pass) {
     const estatus = 1;
     const query = `SELECT id FROM usuarios WHERE username = ? AND password = ? AND estatus = ?`;
@@ -26,13 +27,31 @@ router.post('/', (req, res) => {
 
         } else {
           errorMessage = 'Credenciales incorrectas!';
+
+          return res.json({
+            success: false,
+            token: errorMessage
+
+          });
         }
       } else {
         errorMessage = 'Error en BD!';
+
+        return res.json({
+          success: false,
+          token: errorMessage
+
+        });
       }
     });
   } else {
     errorMessage = "Error en la peticion!";
+
+    return res.json({
+      success: false,
+      token: errorMessage
+
+    });
   }
 
 });

@@ -7,6 +7,7 @@ const mysqlConnection = require('../database');
 
 const Storage = multer.diskStorage({
     destination(req, file, callback) {
+        console.log("Www")
         callback(null, path.join(__dirname, '../public/uploads'))
     },
 
@@ -15,7 +16,8 @@ const Storage = multer.diskStorage({
     }
 })
 const uploadImage = multer({
-    storage: Storage
+    storage: Storage,
+    limits: { fieldSize: 25 * 1024 * 1024 }
 });
 
 
@@ -91,11 +93,12 @@ router.get('/busqueda/:busqueda', middleware, (req, res) => {
 router.post('/reporte', uploadImage.array('productImage', 10), middleware, (req, res) => {
 
     const { fecha, descripcion, latitud, longitud, positivos, negativos, tipoReporte, idUsuario, emergencia } = req.query;
+
     const query = `INSERT INTO reportes (fecha, descripcion, latitud, longitud, positivos, negativos, tipoReporte, idUsuario, emergencia) VALUES (?,?,?,?,?,?,?,?,?)`;
     mysqlConnection.query(query, [fecha, descripcion, latitud, longitud, positivos, negativos, tipoReporte, idUsuario, emergencia], (error, result, fields) => {
         if (!error) {
             console.log(result.insertId);
-            insertImages(result.insertId, req.files);
+            insertImages(result.insertId, req.body.photos);
             res.json({ success: true, data: result });
 
 
