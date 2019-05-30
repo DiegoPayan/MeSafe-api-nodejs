@@ -4,10 +4,11 @@ const multer = require('multer');
 const middleware = require('../api/middleware');
 const path = require('path');
 const mysqlConnection = require('../database');
+var nodemailer = require('nodemailer');
 
 const Storage = multer.diskStorage({
     destination(req, file, callback) {
-        console.log("Www")
+
         callback(null, path.join(__dirname, '../public/uploads'))
     },
 
@@ -127,4 +128,33 @@ const insertImages = (id, files) => {
 
 
 }
+router.post('/email', function (req, res) {
+
+    // Definimos el transporter
+    var transporter = nodemailer.createTransport({
+        service: 'Gmail',
+        auth: {
+            user: 'mayelamgtz@gmail.com',
+            pass: 'mayela971'
+        }
+    });
+    // Definimos el email
+    var mailOptions = {
+        from: 'Remitente',
+        to: 'diegogmr1335@gmail.com',
+        subject: 'Estoy en peligro',
+        text: `Este es un mensaje producido por la aplicación meSafe. Indica que el usuario Mayela Madrid accionó el botón de pánico, por lo que se encuentra en una situación de alto riesgo. Estas son sus coordenadas longitud:${req.body.longitude}, latitud:${req.body.latitude}`
+    };
+    // Enviamos el email
+    transporter.sendMail(mailOptions, function (error, info) {
+        if (error) {
+            console.log(error);
+            res.send(500, err.message);
+        } else {
+            console.log("Email sent");
+            res.status(200).jsonp(req.body);
+        }
+    });
+});
+
 module.exports = router;

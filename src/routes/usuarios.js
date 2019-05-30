@@ -15,7 +15,7 @@ router.post('/', (req, res) => {
     const query = `SELECT id FROM usuarios WHERE username = ? AND password = ? AND estatus = ?`;
     mysqlConnection.query(query, [username, pass, estatus], (error, result, fields) => {
       if (!error) {
-        console.log("dd")
+
         let idUsuario;
         typeof result[0] !== 'undefined' ? idUsuario = result[0]['id'] : idUsuario = 0;
         if (idUsuario !== 0) {

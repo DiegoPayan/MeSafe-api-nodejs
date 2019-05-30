@@ -18,6 +18,7 @@ router.get('/', middleware, (req, res) => {
 });
 
 router.get('/tipo/:tipo', middleware, (req, res) => {
+
     const { tipo } = req.params;
     const query = `SELECT ca.nombre, ca.telefono, ca.direccion, tca.nombre as tipo FROM centroAyuda ca 
                     JOIN tipoCentroAyuda tca ON ca.idTipoCentroAyuda = tca.id WHERE ca.idTipoCentroAyuda = ?`;
