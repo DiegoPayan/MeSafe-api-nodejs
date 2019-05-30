@@ -30,7 +30,11 @@ CREATE TABLE IF NOT EXISTS usuarios (
 ALTER TABLE usuarios ADD FOREIGN KEY (tipoUsuario) REFERENCES tipoUsuario(id);
 
 INSERT INTO usuarios(username,password,nombre,apellidoPaterno,apellidoMaterno, curp, codigoPostal, tipoUsuario, imagenPerfil) 
-VALUES ("dpayan","1234",'Diego', 'Payan', 'Lopez', '', 80026, 1, 'images/usuarios/1'),("mmadrid","1234",'Mayela', 'Madrid', 'Gutierrez', '', 80025, 1, 'images/usuarios/2'),("nzavala","1234",'Nicolas', 'Zavala', 'Sajaropulos', '', 80024, 1, 'images/usuarios/3'),("hrosales","1234",'Hernan', 'Rosales', 'Corvera', '', 80023, 1, 'images/usuarios/4');
+VALUES 
+("dpayan","1234",'Diego', 'Payan', 'Lopez', '', 80026, 1, 'images/usuarios/1'),
+("mmadrid","1234",'Mayela', 'Madrid', 'Gutierrez', '', 80025, 1, 'images/usuarios/2'),
+("nzavala","1234",'Nicolas', 'Zavala', 'Sajaropulos', '', 80024, 1, 'images/usuarios/3'),
+("hrosales","1234",'Hernan', 'Rosales', 'Corvera', '', 80023, 1, 'images/usuarios/4');
 
 CREATE TABLE IF NOT EXISTS amigos (
     id INT NOT NULL AUTO_INCREMENT,
@@ -70,7 +74,16 @@ ALTER TABLE reportes ADD FOREIGN KEY (tipoReporte) REFERENCES tipoReportes(id);
 ALTER TABLE reportes ADD FOREIGN KEY (idUsuario) REFERENCES usuarios(id);
 
 INSERT INTO reportes(fecha,descripcion,latitud,longitud,positivos,negativos,tipoReporte,idUsuario,emergencia)
-VALUES(NOW(),"Reporte Robo 1", "11.11", "111.43", 11, 1, 1,1,true),(NOW(),"Reporte Asalto", "22.22", "122.43", 22, 2, 2,2,true),(NOW(),"Secuestro", "33.33", "133.43", 33, 3, 3,3,false),(NOW(),"Acoso", "44.44", "144.43", 44, 4, 3,4,true);
+VALUES
+(NOW(),"Robo de tienda minimercado por la noche", "24.80", "-107.43", 150, 10,1,1,false),
+(NOW(),"Asalto en callejón oscuro", "24.80", "-107.43", 75, 3, 2,4,true),
+(NOW(),"Zona con poca iluminacion de noche", "33.33", "-107.43", 338, 19, 3,3,false),
+(NOW(),"Robo en pleno centro", "24.80", "-107.43", 550, 28, 1,2,true),
+(NOW(),"Asalto en empresa de desarrollo de software", "24.801", "-107.43", 374, 104, 2,1,true),
+(NOW(),"Perro extraviado", "24.80", "-107.43", 258, 4, 3,4,false),
+(NOW(),"Robo en colonia infonavit", "24.80", "-107.43", 123, 2, 1,2,true),
+(NOW(),"Altado por dos hombres en motocicleta", "24.80", "-107.43", 227, 10, 2,2,true),
+(NOW(),"Niña extraviada", "24.80", "-107.43", 103, 755, 3,3,true);
 
 CREATE TABLE IF NOT EXISTS imagenesReportes (
     id INT NOT NULL AUTO_INCREMENT,
